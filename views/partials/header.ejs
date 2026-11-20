@@ -1,0 +1,11 @@
+<!doctype html><html lang='en'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1'><title><%= title %> | PetCareApp</title><link rel='stylesheet' href='/css/style.css'></head><body>
+<header class='site-nav'><div class='nav-inner'><a class='brand' href='/'>✿ petcare<span class='brand-accent'>.</span></a><nav class='nav-links'><% if (session && session.user) { %>
+          <a href='/dashboard'>Overview</a>
+          <a href='/journals'>Journals</a>
+          
+          
+          <% if (session.user.role === 'admin') { %><a href='/admin/users'>Admin</a><% } %>
+          <a href='/profile'>My profile</a><a href='/logout'>Sign out</a>
+        <% } else { %><a href='/login'>Log in</a><a href='/signup'>Sign up</a><% } %></nav></div></header><main class='page-wrap'>
+<% (messages || []).forEach(function(m) { %><div class='alert alert-success'><%= m %></div><% }); %>
+<% (errors || []).forEach(function(m) { %><div class='alert alert-error'><%= m %></div><% }); %>
